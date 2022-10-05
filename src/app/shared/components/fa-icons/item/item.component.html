@@ -1,0 +1,5 @@
+<div *ngIf="urlAddress === ''; else withUrl">content here ...</div>
+
+<ng-template #withUrl
+  ><a class="social-icon" [href]="urlAddress"><i [class]="faIcon"></i></a
+></ng-template>

@@ -1,0 +1,1 @@
+add different pages to manage CV with personal account and add login option too
