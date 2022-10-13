@@ -1,17 +1,15 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { EThemeVariant } from '@core/public/constants/theme';
-import { ThemeService } from '@core/public/services/theme.service';
-import { Subject, takeUntil } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { PublicBaseComponent } from '@core/public/components/base.component';
 
 @Component({
   selector: 'app-public-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent implements OnInit, OnDestroy {
-  theme = EThemeVariant.PRIMARY;
-  private destroy$: Subject<boolean> = new Subject<boolean>();
-  themeService = inject(ThemeService);
+export class NavbarComponent
+  extends PublicBaseComponent
+  implements OnInit, OnDestroy
+{
   items: Array<{
     href: string;
     label: string;
@@ -41,15 +39,4 @@ export class NavbarComponent implements OnInit, OnDestroy {
       label: 'Awards',
     },
   ];
-
-  ngOnInit(): void {
-    this.themeService.theme$
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((theme) => (this.theme = theme));
-  }
-
-  ngOnDestroy() {
-    this.destroy$.next(true);
-    this.destroy$.unsubscribe();
-  }
 }

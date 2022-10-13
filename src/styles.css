@@ -72,6 +72,10 @@
   --bs-body-line-height: 1.5;
   --bs-body-color: #212529;
   --bs-body-bg: #fff;
+  --bs-primary-hover: #974a2d;
+  --bs-secondary-hover: #444;
+  --bs-danger-hover: #ea5766;
+  --bs-warning-hover: #738;
 }
 
 *,
@@ -271,12 +275,26 @@ sup {
   top: -0.5em;
 }
 
-a {
-  color: #bd5d38;
+/* Links colors variants */
+
+/* Default */
+a,
+a.text-primary {
+  color: var(--bs-primary);
   text-decoration: underline;
 }
-a:hover {
-  color: #974a2d;
+a:hover,
+a.text-primary:hover {
+  color: #974a2d !important;
+}
+
+/* Default */
+a.text-danger {
+  color: var(--bs-danger);
+  text-decoration: underline;
+}
+a.text-danger:hover {
+  color: var(--bs-danger-hover) !important;
 }
 
 a:not([href]):not([class]),
